@@ -1,7 +1,6 @@
 package com.gabriela.mojereije.listOfBills;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -18,18 +17,17 @@ import com.gabriela.mojereije.login.Login;
 import com.gabriela.mojereije.newBill.AddNewBill;
 import com.gabriela.mojereije.settings.Podsjetnik;
 import com.gabriela.mojereije.userManual.UserManual;
+import com.gabriela.mojereije.utils.DateUtils;
 import com.gabriela.mojereije.utils.NotificationUtils;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
-
-import java.util.Date;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ListOfBills extends AppCompatActivity {
+
     @BindView(R.id.paid_recycler)
     RecyclerView paidRecycler;
 
@@ -59,12 +57,6 @@ public class ListOfBills extends AppCompatActivity {
 
         paidRecycler.setAdapter(paidadapter);
         notPaidRecycler.setAdapter(unpaidadapter);
-
-        String currentDate = new Date().toString();
-        String date = RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this)));
-        if (Objects.equals(currentDate, date)) {
-            NotificationUtils.issueNotification(this);
-        }
     }
 
     @OnClick(R.id.fab)

@@ -25,7 +25,8 @@ public class NotificationUtils {
                 .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
                 .setContentTitle("Naslov")
                 .setContentText("Tekst obavijesti")
-                .setContentIntent(resultPendingIntent);
+                .setContentIntent(resultPendingIntent)
+                .setAutoCancel(true);
 
         NotificationManager manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         if (manager != null) {
