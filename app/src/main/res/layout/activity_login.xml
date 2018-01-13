@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.example.gabrielaangebrandt.mojerezije.login.Login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--USERNAME-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="89dp"
+                android:hint="@string/prompt_username">
+
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:inputType="textAutoComplete"
+                    android:textSize="20sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--PASSWORD-->
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_input_layout"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword">
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:inputType="textPassword"
+                    android:textSize="20sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--LOGIN BUTTON-->
+
+            <Button
+                android:id="@+id/btn_login1"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/text_input_layout1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_shape_red2"
+                android:padding="16dp"
+                android:text="@string/logIn"
+                android:textColor="@color/white" />
+
+            <!--OR-->
+
+            <TextView
+                android:id="@+id/tv_or"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_login1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/or"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <!-- REGISTER BUTTON-->
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_or"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape_red2"
+                android:padding="16dp"
+                android:text="@string/register"
+                android:textColor="@color/white" />
+
+            <!--FORGOT PASSWORD-->
+
+            <TextView
+                android:id="@+id/tv_forgotten_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_register"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:clickable="true"
+                android:padding="16dp"
+                android:text="@string/forgottenPass"
+                android:textAlignment="center" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

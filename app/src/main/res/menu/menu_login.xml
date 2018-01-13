@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.gabrielaangebrandt.mojerezije.listOfBills.ListOfBills">
+
+    <item
+        android:id="@+id/action_upute"
+        android:orderInCategory="100"
+        android:title="@string/upute"
+        app:showAsAction="never" />
+</menu>

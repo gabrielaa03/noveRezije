@@ -1,0 +1,187 @@
+<resources>
+    <string name="app_name">Moje režije</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Korisničko ime</string>
+    <string name="prompt_password">Lozinka</string>
+    <string name="or">or</string>
+    <string name="logIn">Prijavi se</string>
+    <string name="register">Registriraj se</string>
+    <string name="forgottenPass">Zaboravili ste lozinku?</string>
+    <string name="wrongPasswordOrUsername">Krivo korisničko ime ili lozinka.</string>
+
+    <!-- Strings related to registration-->
+    <string name="title_activity_login">Prijava</string>
+    <string name="kriviPodaci">Uneseni su krivi podaci</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_incorrect_password">Lozinka je netočna</string>
+    <string name="error_field_required">Obavezno za unijeti.</string>
+    <string name="name">Ime i prezime:</string>
+    <string name="hint_name">npr. Marinko Mirić</string>
+    <string name="hint_Username">npr. Marinko111</string>
+    <string name="password">Lozinka:</string>
+    <string name="username">Korisničko ime:</string>
+    <string name="repeatPassword">Ponovi lozinku:</string>
+    <string name="email">Email:</string>
+    <string name="hint_email">npr. marinko@gmail.com</string>
+    <string name="error_passwordsDontMatch">Lozinke se ne podudaraju!</string>
+    <string name="chooseQuestion">Odaberite vrste računa koje dobivate</string>
+    <string-array name="vrsteRacuna">
+        <item>- - - - - - - - - - - - - - - - - - - - - - - - - - - - -</item>
+        <item>Račun za Internet</item>
+        <item>Račun za vodu</item>
+        <item>Račun za struju</item>
+        <item>Račun za telefon</item>
+        <item>Račun za grijanje</item>
+        <item>RTV pristojba</item>
+        <item>Račun za osiguranje auta</item>
+        <item>Račun za životno osiguranje</item>
+        <item>Račun za osiguranje nekretnina</item>
+        <item>Račun za školovanje</item>
+        <item>Račun za dug na bankovnoj kartici</item>
+        <item>Račun za mobitel</item>
+    </string-array>
+    <string name="elementsArentEntered">Niste unijeli sve podatke.</string>
+    <string name="successfullRegistration">Uspješno ste registrirani.</string>
+    <string name="emailIsNotValid">Email nije validan.</string>
+    <string name="userAlreadyExists">Korisničko ime je već zauzeto.</string>
+    <string name="dodajracune">Dodaj vrste računa:</string>
+    <string name="dodajracun">Dodaj račun</string>
+    <string name="datumPodsjetnika">Kojeg datuma želite da Vas podsjetimo na neplaćene račune:</string>
+    <string name="addrKucanstva">Adresa kućanstva</string>
+    <string name="hint_addr">npr. Matije Gupca 5, Đakovo</string>
+    <string name="placeniRacuni">Plaćeni računi</string>
+    <string name="neplaceniRacuni">Neplaćeni računi</string>
+    <string name="title_activity_login2">Login2</string>
+    <string name="registration">Registracija</string>
+    <string name="tvrtka1">Tvrtka:</string>
+
+    <!--GET PASS-->
+    <string name="getPass">POŠALJI LOZINKU</string>
+    <string name="zaboravljenaLoz">Zaboravljena lozinka</string>
+
+    <!--NEW BILL-->
+    <string name="title_activity_add_new_bill">AddNewBill</string>
+    <string name="vrijednostiracuna">Unos vrijednosti računa</string>
+    <string name="naziv">Vrsta računa</string>
+    <string name="tvrtka">Naziv poduzeća</string>
+    <string name="mjesec">Mjesec</string>
+    <string name="iznos">Iznos (u kunama)</string>
+    <string name="kn">kn</string>
+
+    <string name="brojRacuna">Broj računa</string>
+    <string name="potvrdi">POTVRDI</string>
+    <string name="placeniRacun">Plaćeni račun</string>
+    <string name="neplaceniRacun">Neplaćeni račun</string>
+    <string name="spremanjeRacuna">Želite li spremiti ovaj račun?</string>
+    <string name="potvrdiZaSpremanje">Potvrdite za spremanje računa</string>
+
+    <!--LOGOUT-->
+    <string name="logout">Odjavi se</string>
+    <string name="odjava">Odjavili ste se sa računa.</string>
+    <!--PODSJETNIK-->
+    <string name="postavkePodsjetnika">Postavke podsjetnika</string>
+    <!--UPUTE-->
+    <string name="upute">Upute za korištenje</string>
+    <string name="uputeOpis">Aplikacija "Moje režije" koristi se za pohranjivanje režijskih podataka za kućanstvo.
+        Korisnik dobiva mogućnost pohranjivanja plaćenih i neplaćenih računa za lakše kontroliranje potrošnje.
+    Korisnik se najprije registrira klikom na gumb "Registriraj se". Zatim pravilno unosi sve zahtjevane podatkete potvrđuje registraciju.</string>
+    <string name="uputeOpis1">Istim podacima korisnik se prijavljuje u sustav pristiskom na gumb "Prijavi se". Nakon uspješnog prijavljivanja korisnik dobiva uvid u svoje plaćene i neplaćene račune.</string>
+    <string name="uputeOpis2">Klizanjem po računu prema dolje prikazuju se detaljni podaci o računu. </string>
+    <string name="uputeOpis3">Ukoliko korisnik želi dodati novi račun, odabere "+" te upiše sve podatke. Prisitskom na gumb "POHRANI" pohranjuje novi račun te se on sprema među plaćene ili neplaćene račune.</string>
+    <string name="uputeOpis4">Korisnik može pregledati i grafički prikaz potrošenje određene vrste računa pritiskom na gumb s grafom.</string>
+    <string name="new_bill">Novi račun</string>
+    <string name="graf">Grafički prikaz troškova</string>
+    <string name="pass">Zatražili ste svoju lozinku - Moje režije</string>
+    <string name="mailtext">Poštovani, zatražili ste vašu lozinku od aplikacije \"Moje režije\". Vaša lozinka je: </string>
+    <string name="sendPass">Pošalji lozinku</string>
+    <string name="email_error">Lozinka ne može biti poslana.</string>
+    <string name="stanjeRacuna">Niste odabrali stanje računa.</string>
+    <string name="ht">Hrvatski Telekom</string>
+    <string name="price">Price</string>
+    <string name="desc">Description</string>
+    <string name="bill_number">BIll number</string>
+    <string name="is_bill_paid">PLaceno</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="postavke">Postavke</string>
+    <string name="staraLoz">Unesite staru lozinku:</string>
+    <string name="novaLoz">Unesite novu lozinku:</string>
+    <string name="isteLozinke">Ne možete koristiti istu lozinku za promjenu.</string>
+    <string name="pohranaPromjene">Uspješno ste pohranili promjene.</string>
+    <string name="unesiteNoviDatumPodsjetnika">Unesite novi datum podsjetnika</string>
+    <string name="istiDatum">Novi uneseni datum je isti kao i prethodni.</string>
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".userManual.UserManual">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/uputeOpis"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_registrationscreenshot"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="8dp"
+                android:elevation="4sp"
+                android:layout_gravity="center"
+                android:padding="8dp" />
+
+            <ImageView
+                android:id="@+id/iv_registrationscreenshot2"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:elevation="4sp"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/uputeOpis1"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_loginscreenshot"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:elevation="4sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/uputeOpis2"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_billscreenshot"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:elevation="4sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/uputeOpis3"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_newbillscreenshot"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:elevation="4sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/uputeOpis4"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:elevation="4sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
