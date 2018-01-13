@@ -10,18 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.gabriela.mojereije.R;
 import com.gabriela.mojereije.graph.Graph;
 import com.gabriela.mojereije.listOfBills.adapter.CardAdapter;
 import com.gabriela.mojereije.login.Login;
-import com.gabriela.mojereije.model.data_models.Bill;
 import com.gabriela.mojereije.newBill.AddNewBill;
 import com.gabriela.mojereije.settings.Podsjetnik;
 import com.gabriela.mojereije.userManual.UserManual;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
-import com.gabriela.mojereije.R;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,9 +38,6 @@ public class ListOfBills extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_bills);
         ButterKnife.bind(this);
-        RealmUtils.getUsersPaidBills(SharedPrefs.getSharedPrefs("username", this));
-                RealmUtils.getUsersUnPaidBills(SharedPrefs.getSharedPrefs("username", this));
-        List<Bill> list = RealmUtils.getUsersBills(SharedPrefs.getSharedPrefs("username", this));
         fab.bringToFront();
 
         CardAdapter paidadapter = new CardAdapter("paid");

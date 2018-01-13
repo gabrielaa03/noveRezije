@@ -58,14 +58,10 @@ public class RealmUtils {
         realm.commitTransaction();
     }
 
-    public static void saveUsersBills(Bill bill, String username) {
+    public static void saveUsersBills(List<Bill> bills, String username) {
         Realm realm = App.getRealmInstance();
         realm.beginTransaction();
-        List<Bill> listOfBills = realm.copyFromRealm(realm.where(Bill.class).equalTo("user", username).findAll());
-        if (listOfBills != null) {
-            listOfBills.add(bill);
-            realm.copyToRealmOrUpdate(listOfBills);
-        }
+        realm.copyToRealmOrUpdate(bills);
         realm.commitTransaction();
     }
 
@@ -84,6 +80,7 @@ public class RealmUtils {
         realm.commitTransaction();
         return bills;
     }
+
     public static List<Bill> getUsersUnPaidBills(String value) {
         Realm realm = App.getRealmInstance();
         realm.beginTransaction();
@@ -92,12 +89,12 @@ public class RealmUtils {
         return bills;
     }
 
-    public static HashMap<String, String> getAllMonthsAndTheirValues(String value){
+    public static HashMap<String, String> getAllMonthsAndTheirValues(String value) {
         Realm realm = App.getRealmInstance();
         realm.beginTransaction();
         List<Bill> bills = realm.copyFromRealm(realm.where(Bill.class).equalTo("user", value).findAll());
         HashMap<String, String> hashMap = new HashMap<>();
-        for(Bill bill : bills){
+        for (Bill bill : bills) {
             String[] date = bill.getMjesec().split("/");
             String month = date[1];
             hashMap.put(month, bill.getIznos());

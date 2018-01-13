@@ -35,6 +35,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.gabriela.mojereije.utils.RealmUtils.getUsersBills;
+
 
 public class AddNewBill extends AppCompatActivity {
     @BindView(R.id.spiner_naziv)
@@ -110,7 +112,11 @@ public class AddNewBill extends AppCompatActivity {
                 .setMessage(R.string.spremanjeRacuna)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        RealmUtils.saveUsersBills(bill, SharedPrefs.getSharedPrefs("username", getApplicationContext()));
+                        List<Bill> bills = RealmUtils.getUsersBills(SharedPrefs.getSharedPrefs("username", getApplicationContext()));
+                        List<Bill> bills1 = new ArrayList<>();
+                        bills1.addAll(bills);
+                        bills1.add(bill);
+                        RealmUtils.saveUsersBills(bills1, SharedPrefs.getSharedPrefs("username", getApplicationContext()));
                         Intent intent = new Intent(getApplicationContext(), ListOfBills.class);
                         startActivity(intent);
                     }

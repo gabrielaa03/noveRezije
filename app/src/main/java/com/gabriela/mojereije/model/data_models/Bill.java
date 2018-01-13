@@ -1,15 +1,13 @@
 package com.gabriela.mojereije.model.data_models;
 
 
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class Bill extends RealmObject {
     @PrimaryKey
-    private String user;
-    private String tvrtka, brojRacuna, stanje, iznos, naziv, mjesec;
-    private RealmList<Bill> realmBills = new RealmList<>();
+    private String brojRacuna;
+    private String tvrtka, user, stanje, iznos, naziv, mjesec;
 
     public Bill(String user, String mjesec, String brojRacuna, String naziv, String tvrtka, String iznos, String stanje) {
         this.user = user;
@@ -79,13 +77,4 @@ public class Bill extends RealmObject {
     public void setMjesec(String mjesec) {
         this.mjesec = mjesec;
     }
-
-    public RealmList<Bill> getRealmBills() {
-        return realmBills;
-    }
-
-    public void setRealmBills(RealmList<Bill> realmBills) {
-        this.realmBills = realmBills;
-    }
-
 }
