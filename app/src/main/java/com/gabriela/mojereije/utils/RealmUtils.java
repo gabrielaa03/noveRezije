@@ -23,7 +23,7 @@ public class RealmUtils {
 
     public static User checkIfUserExists(String databaseElement, String value) {
         Realm realm = App.getRealmInstance();
-        User user = realm.where(User.class).equalTo(databaseElement, value).findFirst();
+        User user = realm.copyFromRealm(realm.where(User.class).equalTo(databaseElement, value).findFirst());
         if (user != null) {
             return user;
         }

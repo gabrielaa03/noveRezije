@@ -4,23 +4,23 @@
     tools:context="com.example.gabrielaangebrandt.mojerezije.listOfBills.ListOfBills">
     <item
         android:id="@+id/upali_ugasi_podsjetnik"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         android:title="@string/postavke"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_upute"
-        android:orderInCategory="100"
+        android:orderInCategory="2"
         android:title="@string/upute"
         app:showAsAction="never" />
     <item
         android:id="@+id/logout"
-        android:orderInCategory="100"
+        android:orderInCategory="3"
         android:title="@string/logout"
         app:showAsAction="never" />
     <item
         android:id="@+id/graph"
         android:icon="@drawable/icon_graph"
         android:title=""
-        android:orderInCategory="100"
+        android:orderInCategory="4"
         app:showAsAction="ifRoom" />
 </menu>

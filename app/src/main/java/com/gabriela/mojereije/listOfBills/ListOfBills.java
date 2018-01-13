@@ -1,6 +1,7 @@
 package com.gabriela.mojereije.listOfBills;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,12 @@ import com.gabriela.mojereije.login.Login;
 import com.gabriela.mojereije.newBill.AddNewBill;
 import com.gabriela.mojereije.settings.Podsjetnik;
 import com.gabriela.mojereije.userManual.UserManual;
+import com.gabriela.mojereije.utils.NotificationUtils;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
+
+import java.util.Date;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,29 +59,33 @@ public class ListOfBills extends AppCompatActivity {
 
         paidRecycler.setAdapter(paidadapter);
         notPaidRecycler.setAdapter(unpaidadapter);
+
+        String currentDate = new Date().toString();
+        String date = RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this)));
+        if (currentDate.equals(date)) {
+            NotificationUtils.issueNotification(this);
+        }
     }
 
     @OnClick(R.id.fab)
     public void addNew() {
+        NotificationUtils.issueNotification(this);
         startActivity(new Intent(this, AddNewBill.class));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_list_of_bills, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        //noinspection SimplifiableIfStatement
+
         switch (item.getItemId()) {
             case R.id.upali_ugasi_podsjetnik:
                 startActivity(new Intent(this, Podsjetnik.class));
+                break;
             case R.id.graph:
                 startActivity(new Intent(this, Graph.class));
                 break;
@@ -99,6 +108,6 @@ public class ListOfBills extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Do Here what ever you want do on back press;
+        //do nothing
     }
 }
