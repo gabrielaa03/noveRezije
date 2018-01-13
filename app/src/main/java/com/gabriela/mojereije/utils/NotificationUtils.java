@@ -13,8 +13,10 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class NotificationUtils {
 
-    public static final String channelId = "bills notifications";
-    public static final int notificationId = 10;
+    private static final String channelId = "bills notifications";
+    private static final int notificationId = 10;
+    private static final String notificationTitle = "Moje režije";
+    private static CharSequence notificationDescription = "Platite račune na vrijeme.";
 
 
     public static void issueNotification(Context context) {
@@ -22,9 +24,9 @@ public class NotificationUtils {
         PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
-                .setContentTitle("Naslov")
-                .setContentText("Tekst obavijesti")
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(notificationTitle)
+                .setContentText(notificationDescription)
                 .setContentIntent(resultPendingIntent)
                 .setAutoCancel(true);
 

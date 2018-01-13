@@ -185,4 +185,5 @@
     <string name="unesiteNoviDatumPodsjetnika">Unesite novi datum podsjetnika</string>
     <string name="istiDatum">Novi uneseni datum je isti kao i prethodni.</string>
     <string name="notAll">Niste unjeli sve podatke ili se lozinke poklapaju</string>
+    <string name="naslov">Moje rezije</string>
 </resources>
