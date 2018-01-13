@@ -62,14 +62,13 @@ public class ListOfBills extends AppCompatActivity {
 
         String currentDate = new Date().toString();
         String date = RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this)));
-        if (currentDate.equals(date)) {
+        if (Objects.equals(currentDate, date)) {
             NotificationUtils.issueNotification(this);
         }
     }
 
     @OnClick(R.id.fab)
     public void addNew() {
-        NotificationUtils.issueNotification(this);
         startActivity(new Intent(this, AddNewBill.class));
     }
 

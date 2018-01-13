@@ -1,8 +1,8 @@
 package com.gabriela.mojereije.settings;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,12 +13,9 @@ import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
 import com.gabriela.mojereije.utils.WidgetUtils;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.realm.Realm;
 
 public class Promjena extends AppCompatActivity {
     private String tip;
@@ -57,34 +54,36 @@ public class Promjena extends AppCompatActivity {
             case "lozinka":
                 String novaLozz = et2.getText().toString();
                 String staraLozz = et1.getText().toString();
-                if (novaLozz.equals(staraLozz)) {
-                    WidgetUtils.setToast(this, R.string.isteLozinke);
-                } else {
+                if (!novaLozz.isEmpty() && !staraLozz.isEmpty() && !(novaLozz.equals(staraLozz))) {
                     String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext())));
-                    if (pass.equals(novaLozz)) {
-                        WidgetUtils.setToast(this, R.string.isteLozinke);
-                    } else {
+                    if (!(pass.equals(novaLozz))) {
                         User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
                         assert user != null;
                         user.setPass(novaLozz);
                         RealmUtils.saveUser(user);
+                        WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
+                        startActivity(new Intent(this, Podsjetnik.class));
+                    } else {
+                        WidgetUtils.setToast(getApplicationContext(), R.string.isteLozinke);
                     }
+                } else {
+                    WidgetUtils.setToast(this, R.string.notAll);
                 }
-                WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
-                startActivity(new Intent(this, Podsjetnik.class));
+                break;
+
             case "podsjetnik":
                 String noviDatum = et1.getText().toString();
-                User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
+                User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this));
                 String stariDatum = RealmUtils.getDatumPodsjetnika(user);
-                if(stariDatum.equals(noviDatum)){
-                    WidgetUtils.setToast(this, R.string.istiDatum);
-                }else{
+                if (!(stariDatum.equals(noviDatum))) {
                     assert user != null;
                     user.setDatumPodsjetnika(noviDatum);
                     RealmUtils.saveUser(user);
+                    WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
+                    startActivity(new Intent(this, Podsjetnik.class));
+                } else {
+                    WidgetUtils.setToast(this, R.string.istiDatum);
                 }
-                WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
-                startActivity(new Intent(this, Podsjetnik.class));
         }
     }
 }

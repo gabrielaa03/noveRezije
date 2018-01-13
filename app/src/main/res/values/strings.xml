@@ -184,4 +184,5 @@
     <string name="pohranaPromjene">Uspješno ste pohranili promjene.</string>
     <string name="unesiteNoviDatumPodsjetnika">Unesite novi datum podsjetnika</string>
     <string name="istiDatum">Novi uneseni datum je isti kao i prethodni.</string>
+    <string name="notAll">Niste unjeli sve podatke ili se lozinke poklapaju</string>
 </resources>
