@@ -45,7 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".newBill.CameraActivity"
             android:label="@string/new_bill"
@@ -55,7 +54,6 @@
             android:label="@string/title_activity_settings"
             android:parentActivityName=".listOfBills.ListOfBills"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".settings.Promjena"
             android:label="Promjena podataka"
@@ -71,6 +69,11 @@
             android:label="Graficki prikaz troskova"
             android:parentActivityName=".listOfBills.ListOfBills"
             android:screenOrientation="portrait" />
+
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>

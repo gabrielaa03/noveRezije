@@ -46,8 +46,8 @@ public class Promjena extends AppCompatActivity {
             tv2.setText(R.string.novaLoz);
         } else {
             tv2.setVisibility(View.GONE);
-            User user =  RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this));
-            tv1.setText("Trenutno se podsjetnik javlja " + RealmUtils.getDatumPodsjetnika(user) +  ". u mjesecu \n" + "Unesite novi datum podsjetnika.");
+            User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this));
+            tv1.setText("Trenutno se podsjetnik javlja " + RealmUtils.getDatumPodsjetnika(user) + ". u mjesecu \n" + "Unesite novi datum podsjetnika.");
             et2.setVisibility(View.GONE);
             et1.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
@@ -60,12 +60,12 @@ public class Promjena extends AppCompatActivity {
                 final String novaLozz = et2.getText().toString();
                 String staraLozz = et1.getText().toString();
                 if (!novaLozz.isEmpty() && !staraLozz.isEmpty() && !(novaLozz.equals(staraLozz))) {
-                    String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists("username",  SharedPrefs.getSharedPrefs("username", getApplicationContext())));
+                    String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext())));
                     if (!(pass.equals(novaLozz))) {
                         User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
-                        if(user != null){
-                           RealmUtils.setPass(user, novaLozz);
-                           RealmUtils.saveUser(user);
+                        if (user != null) {
+                            RealmUtils.setPass(user, novaLozz);
+                            RealmUtils.saveUser(user);
                         }
                         WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
                         startActivity(new Intent(this, Settings.class));

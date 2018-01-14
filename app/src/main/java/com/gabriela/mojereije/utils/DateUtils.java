@@ -11,10 +11,9 @@ import java.util.Objects;
 public class DateUtils {
 
     public static boolean isTodaysDate(Context context) {
-        DateFormat format = new SimpleDateFormat("dd", Locale.getDefault());
-        Date currentDate = new Date();
-        String currDate = format.format(currentDate);
+        DateFormat formater = new SimpleDateFormat("dd", Locale.getDefault());
+        String currentDate = formater.format(new Date());
         String date = RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", context)));
-        return Objects.equals(currDate, date);
+        return Objects.equals(currentDate, date);
     }
 }

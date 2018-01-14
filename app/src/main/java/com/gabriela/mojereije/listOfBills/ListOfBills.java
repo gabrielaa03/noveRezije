@@ -1,6 +1,10 @@
 package com.gabriela.mojereije.listOfBills;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +15,19 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.gabriela.mojereije.R;
+import com.gabriela.mojereije.broadcast.MyReceiver;
 import com.gabriela.mojereije.graph.Graph;
 import com.gabriela.mojereije.listOfBills.adapter.CardAdapter;
 import com.gabriela.mojereije.login.Login;
+import com.gabriela.mojereije.model.data_models.User;
 import com.gabriela.mojereije.newBill.AddNewBill;
 import com.gabriela.mojereije.settings.Settings;
 import com.gabriela.mojereije.userManual.UserManual;
+import com.gabriela.mojereije.utils.DateUtils;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
+
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +64,21 @@ public class ListOfBills extends AppCompatActivity {
 
         paidRecycler.setAdapter(paidadapter);
         notPaidRecycler.setAdapter(unpaidadapter);
+
+        AlarmManager alarms = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        MyReceiver receiver = new MyReceiver();
+        IntentFilter filter = new IntentFilter("ALARM_ACTION");
+        registerReceiver(receiver, filter);
+
+        Intent intent = new Intent("ALARM_ACTION");
+        intent.putExtra("param", "My scheduled action");
+        PendingIntent operation = PendingIntent.getBroadcast(this, 0, intent, 0);
+        if (alarms != null && DateUtils.isTodaysDate(this) && (RealmUtils.getUsersUnPaidBills(SharedPrefs.getSharedPrefs("username", this)).size() > 0)) {
+            alarms.set(AlarmManager.RTC_WAKEUP, new Date().getTime(), operation);
+        }
     }
+
 
     @OnClick(R.id.fab)
     public void addNew() {

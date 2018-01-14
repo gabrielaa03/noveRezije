@@ -9,10 +9,11 @@ import android.support.v4.app.NotificationCompat;
 import com.gabriela.mojereije.R;
 import com.gabriela.mojereije.listOfBills.ListOfBills;
 
+import java.util.Date;
+
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class NotificationUtils {
-    // TODO: 14.1.2018. nedovrsene obavijesti
 
     private static final String channelId = "bills notifications";
     private static final int notificationId = 10;
