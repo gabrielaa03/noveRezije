@@ -1,5 +1,6 @@
 package com.gabriela.mojereije.utils;
 
+import android.support.annotation.NonNull;
 import android.widget.EditText;
 
 
@@ -15,16 +16,11 @@ import io.realm.RealmResults;
 
 public class RealmUtils {
 
-    public static List<User> getUsers() {
+    public static User checkIfUserExists(String databaseElement, String value) {
         Realm realm = App.getRealmInstance();
-        return realm.where(User.class).findAll();
-    }
-
-    public static User checkIfUserExists(String value) {
-        Realm realm = App.getRealmInstance();
-        RealmResults<User> users = realm.where(User.class).equalTo("username", value).findAll();
-        if (users.size() > 0) {
-            return users.first();
+        User user = realm.copyFromRealm(realm.where(User.class).equalTo(databaseElement, value).findFirst());
+        if (user != null) {
+            return user;
         }
         return null;
     }
@@ -101,5 +97,4 @@ public class RealmUtils {
         realm.commitTransaction();
         return hashMap;
     }
-
 }

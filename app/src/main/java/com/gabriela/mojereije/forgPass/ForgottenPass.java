@@ -40,7 +40,7 @@ public class ForgottenPass extends AppCompatActivity {
         if (Credentials.checkCredentials(username) || Credentials.checkCredentials(name) || Credentials.checkCredentials(email)) {
             WidgetUtils.setToast(this, R.string.elementsArentEntered );
         } else {
-            User user = RealmUtils.checkIfUserExists(username.getText().toString());
+            User user = RealmUtils.checkIfUserExists("username", username.getText().toString());
             assert user != null;
             if (RealmUtils.getName(user).equals(name.getText().toString()) && RealmUtils.getEmail(user).equals(email.getText().toString())) {
                 Intent intent = new Intent(Intent.ACTION_SEND);

@@ -51,7 +51,7 @@ public class Login extends AppCompatActivity {
         if (Objects.equals(username.getText().toString(), "") || Objects.equals(password.getText().toString(), "")) {
             WidgetUtils.setToast(this, R.string.wrongPasswordOrUsername);
         } else {
-            User user = RealmUtils.checkIfUserExists(username.getText().toString());
+            User user = RealmUtils.checkIfUserExists("username", username.getText().toString());
             if (user != null) {
                 if (user.getPass().equals(password.getText().toString())) {
                     SharedPrefs.setSharedPrefs("username", username.getText().toString(), this);

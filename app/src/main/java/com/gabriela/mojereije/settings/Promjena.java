@@ -22,7 +22,6 @@ import io.realm.Realm;
 
 public class Promjena extends AppCompatActivity {
     private String tip;
-    private Realm realm;
 
     @BindView(R.id.text1)
     TextView tv1;
@@ -46,8 +45,8 @@ public class Promjena extends AppCompatActivity {
             tv1.setText(R.string.staraLoz);
             tv2.setText(R.string.novaLoz);
         } else {
-            tv1.setText(R.string.unesiteNoviDatumPodsjetnika);
             tv2.setVisibility(View.GONE);
+            tv1.setText("Trenutno se podsjetnik javlja " + RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this))) + ". u mjesecu \n" +"Unesite novi datum podsjetnika.");
             et2.setVisibility(View.GONE);
         }
     }
@@ -59,17 +58,12 @@ public class Promjena extends AppCompatActivity {
                 final String novaLozz = et2.getText().toString();
                 String staraLozz = et1.getText().toString();
                 if (!novaLozz.isEmpty() && !staraLozz.isEmpty() && !(novaLozz.equals(staraLozz))) {
-                    String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists(SharedPrefs.getSharedPrefs("username", getApplicationContext())));
+                    String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists("username",  SharedPrefs.getSharedPrefs("username", getApplicationContext())));
                     if (!(pass.equals(novaLozz))) {
-                        final User user = RealmUtils.checkIfUserExists(SharedPrefs.getSharedPrefs("username", getApplicationContext()));
-                        assert user != null;
-                        realm = App.getRealmInstance();
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(@NonNull Realm realm) {
-                                user.setPass(novaLozz);
-                            }
-                        });
+                        User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
+                        if(user != null){
+                            user.setPass(novaLozz);
+                        }
                         RealmUtils.saveUser(user);
                         WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
                         startActivity(new Intent(this, Podsjetnik.class));
@@ -82,24 +76,21 @@ public class Promjena extends AppCompatActivity {
                 break;
 
             case "podsjetnik":
-                final String noviDatum = et1.getText().toString();
-                final User user = RealmUtils.checkIfUserExists(SharedPrefs.getSharedPrefs("username", this));
+                String noviDatum = et1.getText().toString();
+                User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this));
                 String stariDatum = RealmUtils.getDatumPodsjetnika(user);
-                if (!(stariDatum.equals(noviDatum))) {
-                    assert user != null;
-                    realm = App.getRealmInstance();
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            user.setDatumPodsjetnika(noviDatum);
-                        }
-                    });
-                    RealmUtils.saveUser(user);
+                if (stariDatum.equals(noviDatum)) {
+                    WidgetUtils.setToast(this, R.string.istiDatum);
+                } else {
+                    if (user != null) {
+                        user.setDatumPodsjetnika(noviDatum);
+                        RealmUtils.saveUser(user);
+                    }
                     WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
                     startActivity(new Intent(this, Podsjetnik.class));
-                } else {
-                    WidgetUtils.setToast(this, R.string.istiDatum);
                 }
+                break;
         }
     }
 }
+

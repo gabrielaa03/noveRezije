@@ -14,9 +14,8 @@ public class WidgetUtils {
     private static void loadImage(ImageView iv, int path){
         Glide.with(iv.getContext()).load(path).into(iv);
     }
-    public static void setImages(ImageView registration, ImageView registration2, ImageView login, ImageView bill, ImageView newbill, ImageView graph){
+    public static void setImages(ImageView registration, ImageView login, ImageView bill, ImageView newbill, ImageView graph){
         loadImage(registration, R.drawable.registrationscreenshot);
-        loadImage(registration2, R.drawable.registrationscreenshot2);
         loadImage(login, R.drawable.loginscreenshot);
         loadImage(bill, R.drawable.billsscreenshot);
         loadImage(newbill, R.drawable.newbillscreenshot);
@@ -37,7 +36,7 @@ public class WidgetUtils {
         switch(state){
             case "rb_placen":
                 return "Plaćeni račun";
-            case "rb_neplace":
+            case "rb_neplacen":
                 return "Neplaćeni račun";
         }
         return null;

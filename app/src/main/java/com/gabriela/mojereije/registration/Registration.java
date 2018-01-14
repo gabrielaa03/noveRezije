@@ -53,7 +53,7 @@ public class Registration extends AppCompatActivity {
                 || Credentials.checkCredentials(placa)) {
             WidgetUtils.setToast(this, R.string.elementsArentEntered);
         } else {
-            if (RealmUtils.checkIfUserExists(username.getText().toString()) != null) {
+            if (RealmUtils.checkIfUserExists("username", username.getText().toString()) != null) {
                 WidgetUtils.setToast(this, R.string.userAlreadyExists);
             } else {
                 if (!pass.getText().toString().equals(pass2.getText().toString())) {
