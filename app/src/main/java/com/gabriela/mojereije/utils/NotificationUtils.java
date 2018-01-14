@@ -12,6 +12,7 @@ import com.gabriela.mojereije.listOfBills.ListOfBills;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class NotificationUtils {
+    // TODO: 14.1.2018. nedovrsene obavijesti
 
     private static final String channelId = "bills notifications";
     private static final int notificationId = 10;

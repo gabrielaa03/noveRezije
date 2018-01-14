@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 
 public class SharedPrefs {
+
     public static void setSharedPrefs(String key, String value, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();

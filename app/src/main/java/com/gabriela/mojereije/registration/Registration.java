@@ -6,11 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+import com.gabriela.mojereije.R;
 import com.gabriela.mojereije.login.Login;
 import com.gabriela.mojereije.utils.Credentials;
 import com.gabriela.mojereije.utils.RealmUtils;
-import com.gabriela.mojereije.R;
 import com.gabriela.mojereije.utils.WidgetUtils;
 
 import java.util.regex.Matcher;
@@ -43,6 +42,7 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
         ButterKnife.bind(this);
     }
 
@@ -51,13 +51,13 @@ public class Registration extends AppCompatActivity {
         if (Credentials.checkCredentials(imeIPrezime) || Credentials.checkCredentials(adresa) || Credentials.checkCredentials(email)
                 || Credentials.checkCredentials(username) || Credentials.checkCredentials(pass) || Credentials.checkCredentials(pass2)
                 || Credentials.checkCredentials(placa)) {
-            WidgetUtils.setToast(this,   R.string.elementsArentEntered);
+            WidgetUtils.setToast(this, R.string.elementsArentEntered);
         } else {
-            if (RealmUtils.checkIfUserExists("username", username.getText().toString()) != null) {
-                WidgetUtils.setToast(this,    R.string.userAlreadyExists);
+            if (RealmUtils.checkIfUserExists(username.getText().toString()) != null) {
+                WidgetUtils.setToast(this, R.string.userAlreadyExists);
             } else {
                 if (!pass.getText().toString().equals(pass2.getText().toString())) {
-                    WidgetUtils.setToast(this,   R.string.error_passwordsDontMatch);
+                    WidgetUtils.setToast(this, R.string.error_passwordsDontMatch);
                 } else {
 //                    String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
                     Pattern pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
@@ -65,10 +65,10 @@ public class Registration extends AppCompatActivity {
                     if (matcher.matches()) {
                         RealmUtils.saveUser(RealmUtils.createUser(username, imeIPrezime, adresa, email, pass, pass2));
                         startActivity(new Intent(this, Login.class));
-                        WidgetUtils.setToast(this,    R.string.successfullRegistration);
+                        WidgetUtils.setToast(this, R.string.successfullRegistration);
                         Toast.makeText(this, R.string.successfullRegistration, Toast.LENGTH_LONG).show();
                     } else {
-                        WidgetUtils.setToast(this,  R.string.emailIsNotValid);
+                        WidgetUtils.setToast(this, R.string.emailIsNotValid);
                     }
                 }
             }

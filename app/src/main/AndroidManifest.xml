@@ -66,6 +66,11 @@
             android:label="Upute za koristenje"
             android:parentActivityName=".listOfBills.ListOfBills"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".graph.Graph"
+            android:label="Graficki prikaz troskova"
+            android:parentActivityName=".listOfBills.ListOfBills"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

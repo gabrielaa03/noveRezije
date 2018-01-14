@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 import com.gabriela.mojereije.forgPass.ForgottenPass;
@@ -31,11 +30,11 @@ public class Login extends AppCompatActivity {
     EditText username;
     @BindView(R.id.et_password)
     EditText password;
-//    DataSnapshot dataSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (SharedPrefs.getSharedPrefs("isLogged", this).equals("in")) {
             startActivity(new Intent(this, ListOfBills.class));
         } else if (SharedPrefs.getSharedPrefs("isLogged", this).equals("out")) {
@@ -50,10 +49,9 @@ public class Login extends AppCompatActivity {
     @OnClick(R.id.btn_login1)
     public void logIn() {
         if (Objects.equals(username.getText().toString(), "") || Objects.equals(password.getText().toString(), "")) {
-            WidgetUtils.setToast(this,  R.string.wrongPasswordOrUsername);
+            WidgetUtils.setToast(this, R.string.wrongPasswordOrUsername);
         } else {
-//            User user = FirebaseUtils.checkIfUserExists(username.getText().toString(), dataSnapshot);
-            User user = RealmUtils.checkIfUserExists("username", username.getText().toString());
+            User user = RealmUtils.checkIfUserExists(username.getText().toString());
             if (user != null) {
                 if (user.getPass().equals(password.getText().toString())) {
                     SharedPrefs.setSharedPrefs("username", username.getText().toString(), this);
@@ -61,10 +59,10 @@ public class Login extends AppCompatActivity {
                     SharedPrefs.setSharedPrefs("isLogged", "in", this);
                     startActivity(new Intent(this, ListOfBills.class));
                 } else {
-                    WidgetUtils.setToast(this,  R.string.wrongPasswordOrUsername);
+                    WidgetUtils.setToast(this, R.string.wrongPasswordOrUsername);
                 }
             } else {
-                WidgetUtils.setToast(this,  R.string.wrongPasswordOrUsername);
+                WidgetUtils.setToast(this, R.string.wrongPasswordOrUsername);
             }
         }
     }

@@ -5,14 +5,10 @@ import android.widget.Spinner;
 
 public class Credentials {
     public static boolean checkCredentials(EditText et){
-        if(et.getText().toString().isEmpty()){
-            return true;
-        }return false;
+        return et.getText().toString().isEmpty();
     }
 
     public static boolean checkCredentialsSpinner(Spinner spinner){
-        if(spinner.getSelectedItem().toString().isEmpty()){
-            return true;
-        }return false;
+        return spinner.getSelectedItem().toString().isEmpty();
     }
 }

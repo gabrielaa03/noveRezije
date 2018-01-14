@@ -11,8 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import io.realm.Realm;
-
-//import com.google.firebase.database.DataSnapshot;
+import io.realm.RealmResults;
 
 public class RealmUtils {
 
@@ -21,11 +20,11 @@ public class RealmUtils {
         return realm.where(User.class).findAll();
     }
 
-    public static User checkIfUserExists(String databaseElement, String value) {
+    public static User checkIfUserExists(String value) {
         Realm realm = App.getRealmInstance();
-        User user = realm.copyFromRealm(realm.where(User.class).equalTo(databaseElement, value).findFirst());
-        if (user != null) {
-            return user;
+        RealmResults<User> users = realm.where(User.class).equalTo("username", value).findAll();
+        if (users.size() > 0) {
+            return users.first();
         }
         return null;
     }

@@ -7,12 +7,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.gabriela.mojereije.R;
+import com.gabriela.mojereije.utils.DateUtils;
+import com.gabriela.mojereije.utils.NotificationUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Podsjetnik  extends AppCompatActivity{
+public class Podsjetnik extends AppCompatActivity {
 
     @BindView(R.id.switch1)
     Switch upali_ugasi;
@@ -28,21 +30,22 @@ public class Podsjetnik  extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
         ButterKnife.bind(this);
-        if(upali_ugasi.isChecked()){
-            //postavi podsjetnik da radi
-        }else{
+        if (upali_ugasi.isChecked()) {
+            //podsjetnik radi
+        } else {
             //postavi podsjetnik da ne radi
         }
     }
+
     @OnClick(R.id.promjenaLozz)
-    public void promjeniLozinku(){
+    public void promjeniLozinku() {
         Intent intent = new Intent(this, Promjena.class);
         intent.putExtra("tip", "lozinka");
         startActivity(intent);
     }
 
     @OnClick(R.id.promjenaPodsjetnika)
-    public void promjeniPodsjetnik(){
+    public void promjeniPodsjetnik() {
         Intent intent = new Intent(this, Promjena.class);
         intent.putExtra("tip", "podsjetnik");
         startActivity(intent);
