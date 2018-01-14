@@ -1,15 +1,15 @@
 package com.gabriela.mojereije.settings;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.gabriela.mojereije.R;
-import com.gabriela.mojereije.model.App;
 import com.gabriela.mojereije.model.data_models.User;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
@@ -18,7 +18,6 @@ import com.gabriela.mojereije.utils.WidgetUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.realm.Realm;
 
 public class Promjena extends AppCompatActivity {
     private String tip;
@@ -35,6 +34,7 @@ public class Promjena extends AppCompatActivity {
     @BindView(R.id.edittext2)
     EditText et2;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +46,10 @@ public class Promjena extends AppCompatActivity {
             tv2.setText(R.string.novaLoz);
         } else {
             tv2.setVisibility(View.GONE);
-            tv1.setText("Trenutno se podsjetnik javlja " + RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this))) + ". u mjesecu \n" +"Unesite novi datum podsjetnika.");
+            User user =  RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", this));
+            tv1.setText("Trenutno se podsjetnik javlja " + RealmUtils.getDatumPodsjetnika(user) +  ". u mjesecu \n" + "Unesite novi datum podsjetnika.");
             et2.setVisibility(View.GONE);
+            et1.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
     }
 
@@ -62,11 +64,11 @@ public class Promjena extends AppCompatActivity {
                     if (!(pass.equals(novaLozz))) {
                         User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
                         if(user != null){
-                            user.setPass(novaLozz);
+                           RealmUtils.setPass(user, novaLozz);
+                           RealmUtils.saveUser(user);
                         }
-                        RealmUtils.saveUser(user);
                         WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
-                        startActivity(new Intent(this, Podsjetnik.class));
+                        startActivity(new Intent(this, Settings.class));
                     } else {
                         WidgetUtils.setToast(getApplicationContext(), R.string.isteLozinke);
                     }
@@ -83,11 +85,11 @@ public class Promjena extends AppCompatActivity {
                     WidgetUtils.setToast(this, R.string.istiDatum);
                 } else {
                     if (user != null) {
-                        user.setDatumPodsjetnika(noviDatum);
+                        RealmUtils.setDatumPodsjetnika(user, noviDatum);
                         RealmUtils.saveUser(user);
                     }
                     WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
-                    startActivity(new Intent(this, Podsjetnik.class));
+                    startActivity(new Intent(this, Settings.class));
                 }
                 break;
         }

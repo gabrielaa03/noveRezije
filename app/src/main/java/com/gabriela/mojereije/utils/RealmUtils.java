@@ -18,7 +18,7 @@ public class RealmUtils {
 
     public static User checkIfUserExists(String databaseElement, String value) {
         Realm realm = App.getRealmInstance();
-        User user = realm.copyFromRealm(realm.where(User.class).equalTo(databaseElement, value).findFirst());
+        User user = realm.where(User.class).equalTo(databaseElement, value).findFirst();
         if (user != null) {
             return user;
         }
@@ -27,6 +27,13 @@ public class RealmUtils {
 
     public static String getPass(User user) {
         return user.getPass();
+    }
+
+    public static void setPass(User user, String novaLozz) {
+        Realm realm = App.getRealmInstance();
+        realm.beginTransaction();
+        user.setPass(novaLozz);
+        realm.commitTransaction();
     }
 
     public static String getEmail(User user) {
@@ -39,6 +46,13 @@ public class RealmUtils {
 
     public static String getDatumPodsjetnika(User user) {
         return user.getDatumPodsjetnika();
+    }
+
+    public static void setDatumPodsjetnika(User user, String noviDatum){
+        Realm realm = App.getRealmInstance();
+        realm.beginTransaction();
+        user.setDatumPodsjetnika(noviDatum);
+        realm.commitTransaction();
     }
 
     public static User createUser(EditText username, EditText imeIPrezime, EditText adresa, EditText email, EditText pass, EditText placa) {

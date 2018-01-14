@@ -63,7 +63,7 @@ public class Registration extends AppCompatActivity {
                     Pattern pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(email.getText().toString());
                     if (matcher.matches()) {
-                        RealmUtils.saveUser(RealmUtils.createUser(username, imeIPrezime, adresa, email, pass, pass2));
+                        RealmUtils.saveUser(RealmUtils.createUser(username, imeIPrezime, adresa, email, pass, placa));
                         startActivity(new Intent(this, Login.class));
                         WidgetUtils.setToast(this, R.string.successfullRegistration);
                         Toast.makeText(this, R.string.successfullRegistration, Toast.LENGTH_LONG).show();

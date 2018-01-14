@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Podsjetnik extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
 
     @BindView(R.id.switch1)
     Switch upali_ugasi;

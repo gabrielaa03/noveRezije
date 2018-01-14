@@ -15,10 +15,8 @@ import com.gabriela.mojereije.graph.Graph;
 import com.gabriela.mojereije.listOfBills.adapter.CardAdapter;
 import com.gabriela.mojereije.login.Login;
 import com.gabriela.mojereije.newBill.AddNewBill;
-import com.gabriela.mojereije.settings.Podsjetnik;
+import com.gabriela.mojereije.settings.Settings;
 import com.gabriela.mojereije.userManual.UserManual;
-import com.gabriela.mojereije.utils.DateUtils;
-import com.gabriela.mojereije.utils.NotificationUtils;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
 
@@ -75,7 +73,7 @@ public class ListOfBills extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.upali_ugasi_podsjetnik:
-                startActivity(new Intent(this, Podsjetnik.class));
+                startActivity(new Intent(this, Settings.class));
                 break;
             case R.id.graph:
                 startActivity(new Intent(this, Graph.class));

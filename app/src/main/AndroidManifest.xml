@@ -51,15 +51,15 @@
             android:label="@string/new_bill"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".settings.Podsjetnik"
+            android:name=".settings.Settings"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".listOfBills.ListOfBills"
             android:screenOrientation="portrait" />
 
         <activity
             android:name=".settings.Promjena"
-            android:label="Promjena lozinke"
-            android:parentActivityName=".settings.Podsjetnik"
+            android:label="Promjena podataka"
+            android:parentActivityName=".settings.Settings"
             android:screenOrientation="portrait" />
         <activity
             android:name=".userManual.UserManual"
