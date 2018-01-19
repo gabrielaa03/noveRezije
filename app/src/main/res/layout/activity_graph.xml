@@ -3,4 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--VRSTA RAČUNA-->
+    <Spinner
+        android:id="@+id/spiner_naziv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_vrijednostiracuna"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:inputType="textAutoComplete"
+        android:paddingBottom="8dp"
+        android:paddingTop="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinner_years"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spiner_naziv"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:inputType="textAutoComplete"
+        android:paddingBottom="8dp"
+        android:paddingTop="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_below="@+id/spinner_years"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph" />
+
+
+
+
+
 </RelativeLayout>
