@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:clickable="true"
+                android:layout_alignParentTop="true"
+                android:background="@android:drawable/ic_delete"
+                android:padding="8dp" />
+
+            <RelativeLayout
+                android:id="@+id/card_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_descUpis"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="@string/tvrtka1" />
+
+                <TextView
+                    android:id="@+id/tv_tvrtka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_descUpis"
+                    android:layout_margin="8dp"
+                    android:text="@string/tvrtka1"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_tvrtkaUpis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_descUpis"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/tv_tvrtka"
+                    android:layout_toRightOf="@+id/tv_tvrtka"
+                    android:textSize="15sp"
+                    tools:text="@string/tvrtka1" />
+
+                <TextView
+                    android:id="@+id/tv_brojRcuna"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_tvrtka"
+                    android:layout_margin="8dp"
+                    android:text="@string/brojRacuna"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_brojRacunaUpis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_tvrtkaUpis"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/tv_brojRcuna"
+                    android:layout_toRightOf="@+id/tv_tvrtka"
+                    android:textSize="15sp"
+                    tools:text="@string/tvrtka1" />
+
+                <TextView
+                    android:id="@+id/tv_mjesec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_brojRcuna"
+                    android:layout_margin="8dp"
+                    android:text="@string/mjesec"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_mjesecUpis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_brojRacunaUpis"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/tv_mjesec"
+                    android:layout_toRightOf="@+id/tv_mjesec"
+                    android:textSize="15sp"
+                    tools:text="5." />
+
+                <TextView
+                    android:id="@+id/tv_stanjeUpis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_mjesec"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="@string/neplaceniRacun" />
+
+                <TextView
+                    android:id="@+id/iznos"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_stanjeUpis"
+                    android:background="@drawable/button_shape"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="200,56kn" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
