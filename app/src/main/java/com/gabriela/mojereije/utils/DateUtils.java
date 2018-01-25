@@ -14,6 +14,6 @@ public class DateUtils {
         DateFormat formater = new SimpleDateFormat("dd", Locale.getDefault());
         String currentDate = formater.format(new Date());
         String date = RealmUtils.getDatumPodsjetnika(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", context)));
-        return Objects.equals(currentDate, date);
+        return currentDate.equals(date);
     }
 }

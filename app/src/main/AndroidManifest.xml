@@ -66,9 +66,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".graph.Graph"
-            android:label="Graficki prikaz troskova"
             android:parentActivityName=".listOfBills.ListOfBills"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
 
         <receiver
             android:name=".broadcast.MyReceiver"

@@ -19,7 +19,7 @@ public class WidgetUtils {
         loadImage(login, R.drawable.loginscreenshot);
         loadImage(bill, R.drawable.billsscreenshot);
         loadImage(newbill, R.drawable.newbillscreenshot);
-        loadImage(graph, R.drawable.loginscreenshot);
+        loadImage(graph, R.drawable.fraphscreenshot);
     }
 
     public static void setSpinner(Spinner spinner, Context context){

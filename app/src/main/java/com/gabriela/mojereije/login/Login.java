@@ -45,10 +45,9 @@ public class Login extends AppCompatActivity {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @OnClick(R.id.btn_login1)
     public void logIn() {
-        if (Objects.equals(username.getText().toString(), "") || Objects.equals(password.getText().toString(), "")) {
+        if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
             WidgetUtils.setToast(this, R.string.wrongPasswordOrUsername);
         } else {
             User user = RealmUtils.checkIfUserExists("username", username.getText().toString());

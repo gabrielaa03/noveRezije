@@ -54,7 +54,7 @@ public class CameraActivity extends AppCompatActivity {
                 .Builder(this, barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setRequestedPreviewSize(1600, 1024)
-                .setAutoFocusEnabled(true)
+//                .setAutoFocusEnabled(true)
                 .setRequestedFps(24.0f)
                 .build();
         startReading();

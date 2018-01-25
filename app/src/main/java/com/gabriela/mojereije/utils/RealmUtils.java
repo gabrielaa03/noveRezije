@@ -8,7 +8,9 @@ import com.gabriela.mojereije.model.App;
 import com.gabriela.mojereije.model.data_models.Bill;
 import com.gabriela.mojereije.model.data_models.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import io.realm.Realm;
@@ -48,7 +50,7 @@ public class RealmUtils {
         return user.getDatumPodsjetnika();
     }
 
-    public static void setDatumPodsjetnika(User user, String noviDatum){
+    public static void setDatumPodsjetnika(User user, String noviDatum) {
         Realm realm = App.getRealmInstance();
         realm.beginTransaction();
         user.setDatumPodsjetnika(noviDatum);
@@ -67,7 +69,7 @@ public class RealmUtils {
         realm.commitTransaction();
     }
 
-    public static void saveUsersBills(List<Bill> bills, String username) {
+    public static void saveUsersBills(List<Bill> bills) {
         Realm realm = App.getRealmInstance();
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(bills);
@@ -110,5 +112,28 @@ public class RealmUtils {
         }
         realm.commitTransaction();
         return hashMap;
+    }
+
+    public static void changeBill(String brojRacuna, String username) {
+        Realm realm = App.getRealmInstance();
+        List<Bill> bills = realm.copyFromRealm(realm.where(Bill.class).equalTo("user", username).equalTo("stanje", "rb_neplacen").findAll());
+        realm.beginTransaction();
+        for (Bill bill1 : bills) {
+          if(bill1.getBrojRacuna().equals(brojRacuna)){
+              bill1.setStanje("rb_placen");
+              realm.copyToRealmOrUpdate(bills);
+          }
+        }
+        realm.commitTransaction();
+    }
+
+    public static void deleteItem(String brojRacuna, String username) {
+        Realm realm = App.getRealmInstance();
+        realm.beginTransaction();
+        Bill bill = realm.where(Bill.class).equalTo("user", username).equalTo("brojRacuna", brojRacuna).findFirst();
+        if (bill != null) {
+            bill.deleteFromRealm();
+        }
+        realm.commitTransaction();
     }
 }

@@ -57,23 +57,29 @@ public class Promjena extends AppCompatActivity {
     public void spremiPodatke() {
         switch (tip) {
             case "lozinka":
+
                 final String novaLozz = et2.getText().toString();
                 String staraLozz = et1.getText().toString();
-                if (!novaLozz.isEmpty() && !staraLozz.isEmpty() && !(novaLozz.equals(staraLozz))) {
-                    String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext())));
-                    if (!(pass.equals(novaLozz))) {
-                        User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
-                        if (user != null) {
-                            RealmUtils.setPass(user, novaLozz);
-                            RealmUtils.saveUser(user);
+
+                String pass = RealmUtils.getPass(RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext())));
+                if (pass.equals(staraLozz)) {
+                    if (!novaLozz.isEmpty() && !staraLozz.isEmpty() && !(novaLozz.equals(staraLozz))) {
+                        if (!(pass.equals(novaLozz))) {
+                            User user = RealmUtils.checkIfUserExists("username", SharedPrefs.getSharedPrefs("username", getApplicationContext()));
+                            if (user != null) {
+                                RealmUtils.setPass(user, novaLozz);
+                                RealmUtils.saveUser(user);
+                            }
+                            WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
+                            startActivity(new Intent(this, Settings.class));
+                        } else {
+                            WidgetUtils.setToast(getApplicationContext(), R.string.isteLozinke);
                         }
-                        WidgetUtils.setToast(getApplicationContext(), R.string.pohranaPromjene);
-                        startActivity(new Intent(this, Settings.class));
                     } else {
-                        WidgetUtils.setToast(getApplicationContext(), R.string.isteLozinke);
+                        WidgetUtils.setToast(this, R.string.notAll);
                     }
                 } else {
-                    WidgetUtils.setToast(this, R.string.notAll);
+                    et1.setError("Stara lozinka se ne podudara!");
                 }
                 break;
 

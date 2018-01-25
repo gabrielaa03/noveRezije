@@ -3,9 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\Users\Korisnik\Desktop\noveRezije\app\app.iml" filepath="F:\Users\Korisnik\Desktop\noveRezije\app\app.iml" />
       <module fileurl="file://E:\_FILES\ANDROID_STUDIO\noveRezije\app\app.iml" filepath="E:\_FILES\ANDROID_STUDIO\noveRezije\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/noveRezije.iml" filepath="$PROJECT_DIR$/noveRezije.iml" />
       <module fileurl="file://E:\_FILES\ANDROID_STUDIO\noveRezije\noveRezije.iml" filepath="E:\_FILES\ANDROID_STUDIO\noveRezije\noveRezije.iml" />
+      <module fileurl="file://F:\Users\Korisnik\Desktop\noveRezije\noveRezije.iml" filepath="F:\Users\Korisnik\Desktop\noveRezije\noveRezije.iml" />
     </modules>
   </component>
 </project>

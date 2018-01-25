@@ -47,7 +47,7 @@ public class Graph extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         ButterKnife.bind(this);
-
+        setTitle(R.string.graf);
         mSeries2 = new LineGraphSeries<>();
         WidgetUtils.setSpinner(vrsta, this);
 
@@ -60,7 +60,6 @@ public class Graph extends AppCompatActivity {
         final Spinner spinYear = (Spinner)findViewById(R.id.spinner_years);
         spinYear.setAdapter(adapter);
 
-        //final TextView ddd = (TextView)findViewById(R.id.ddd);
         text = vrsta.getSelectedItem().toString();
         final GraphView graph = (GraphView) findViewById(R.id.graph);
 

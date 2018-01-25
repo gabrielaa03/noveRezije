@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ import com.gabriela.mojereije.userManual.UserManual;
 import com.gabriela.mojereije.utils.DateUtils;
 import com.gabriela.mojereije.utils.RealmUtils;
 import com.gabriela.mojereije.utils.SharedPrefs;
+import com.gabriela.mojereije.utils.WidgetUtils;
 
 import java.util.Date;
 
@@ -43,6 +45,11 @@ public class ListOfBills extends AppCompatActivity {
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
+    CardAdapter paidadapter;
+    CardAdapter unpaidadapter;
+//
+//    @BindView(R.id.swiperefresh)
+//    SwipeRefreshLayout mySwipeRefreshLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +57,8 @@ public class ListOfBills extends AppCompatActivity {
         ButterKnife.bind(this);
         fab.bringToFront();
 
-        CardAdapter paidadapter = new CardAdapter("paid");
-        CardAdapter unpaidadapter = new CardAdapter("unpaid");
+        paidadapter = new CardAdapter("paid", this);
+        unpaidadapter = new CardAdapter("unpaid", this);
 
         paidRecycler.setLayoutManager(new LinearLayoutManager(this));
         notPaidRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -77,8 +84,8 @@ public class ListOfBills extends AppCompatActivity {
         if (alarms != null && DateUtils.isTodaysDate(this) && (RealmUtils.getUsersUnPaidBills(SharedPrefs.getSharedPrefs("username", this)).size() > 0)) {
             alarms.set(AlarmManager.RTC_WAKEUP, new Date().getTime(), operation);
         }
-    }
 
+    }
 
     @OnClick(R.id.fab)
     public void addNew() {
@@ -121,5 +128,11 @@ public class ListOfBills extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //do nothing
+    }
+
+    public void refreshRecyclerViews(){
+        paidadapter.setBillList(RealmUtils.getUsersPaidBills(SharedPrefs.getSharedPrefs("username", this)));
+        unpaidadapter.setBillList(RealmUtils.getUsersUnPaidBills(SharedPrefs.getSharedPrefs("username", this)));
+        WidgetUtils.setToast(this, R.string.listepromijenjene);
     }
 }

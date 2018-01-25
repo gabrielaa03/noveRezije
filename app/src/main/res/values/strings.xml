@@ -186,4 +186,8 @@
     <string name="istiDatum">Novi uneseni datum je isti kao i prethodni.</string>
     <string name="notAll">Niste upisali sve podatke ili se lozinke ne podudaraju.</string>
     <string name="naslov">Moje režije</string>
+    <string name="od1do31">Unesite datum od 1. do 31. u mjesecu</string>
+    <string name="longClick">Držite dugo na karticu da promjenite stanje.</string>
+    <string name="listepromijenjene">Liste računa promijenjene.</string>
+    <string name="billDeleted">Račun obrisan</string>
 </resources>

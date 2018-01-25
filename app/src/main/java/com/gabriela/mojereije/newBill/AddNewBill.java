@@ -81,25 +81,28 @@ public class AddNewBill extends AppCompatActivity {
     public void addBill() {
         if (!rb_neplacen.isChecked() && !rb_placen.isChecked()) {
             WidgetUtils.setToast(this, R.string.stanjeRacuna);
-        } else if (!rb_neplacen.isChecked() && rb_placen.isChecked()) {
+        } else {
+            if (rb_placen.isChecked()) {
                 if (Credentials.checkCredentialsSpinner(vrsta) || Credentials.checkCredentials(tvrtka) || Credentials.checkCredentials(brojRacuna) ||
                         Credentials.checkCredentials(mjesec) || Credentials.checkCredentials(iznos)) {
                     WidgetUtils.setToast(this, R.string.elementsArentEntered);
                 } else {
                     bill = new Bill(SharedPrefs.getSharedPrefs("username", this), mjesec.getText().toString(), brojRacuna.getText().toString(), vrsta.getSelectedItem().toString(), tvrtka.getText().toString(), iznos.getText().toString(), "rb_placen");
+                    startDialog();
                 }
-
-        } else {
-            if (Credentials.checkCredentialsSpinner(vrsta) || Credentials.checkCredentials(tvrtka) || Credentials.checkCredentials(brojRacuna) ||
-                    Credentials.checkCredentials(mjesec) || Credentials.checkCredentials(iznos)) {
-                WidgetUtils.setToast(this, R.string.elementsArentEntered);
             } else {
-                bill = new Bill(SharedPrefs.getSharedPrefs("username", this), mjesec.getText().toString(), brojRacuna.getText().toString(), vrsta.getSelectedItem().toString(), tvrtka.getText().toString(), iznos.getText().toString(), "rb_neplacen");
+                if (Credentials.checkCredentialsSpinner(vrsta) || Credentials.checkCredentials(tvrtka) || Credentials.checkCredentials(brojRacuna) ||
+                        Credentials.checkCredentials(mjesec) || Credentials.checkCredentials(iznos)) {
+                    WidgetUtils.setToast(this, R.string.elementsArentEntered);
+                } else {
+                    bill = new Bill(SharedPrefs.getSharedPrefs("username", this), mjesec.getText().toString(), brojRacuna.getText().toString(), vrsta.getSelectedItem().toString(), tvrtka.getText().toString(), iznos.getText().toString(), "rb_neplacen");
+                    startDialog();
+                }
             }
-        }
-        startDialog();
 
-}
+        }
+
+    }
 
     private void startDialog() {
         final AlertDialog.Builder builder;
@@ -116,7 +119,7 @@ public class AddNewBill extends AppCompatActivity {
                         List<Bill> bills1 = new ArrayList<>();
                         bills1.addAll(bills);
                         bills1.add(bill);
-                        RealmUtils.saveUsersBills(bills1, SharedPrefs.getSharedPrefs("username", getApplicationContext()));
+                        RealmUtils.saveUsersBills(bills1);
                         Intent intent = new Intent(getApplicationContext(), ListOfBills.class);
                         startActivity(intent);
                     }
@@ -140,6 +143,7 @@ public class AddNewBill extends AppCompatActivity {
     public void pickMonth() {
         createDialogWithoutDateField().show();
     }
+
     private void updateLabel() {
         String myFormat = "yy/MM"; //In which you need put here
         sdf = new SimpleDateFormat(myFormat, Locale.US);
