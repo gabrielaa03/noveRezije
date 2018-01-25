@@ -47,9 +47,6 @@ public class ListOfBills extends AppCompatActivity {
     FloatingActionButton fab;
     CardAdapter paidadapter;
     CardAdapter unpaidadapter;
-//
-//    @BindView(R.id.swiperefresh)
-//    SwipeRefreshLayout mySwipeRefreshLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -30,11 +30,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
         ButterKnife.bind(this);
-        if (upali_ugasi.isChecked()) {
-            //podsjetnik radi
-        } else {
-            //postavi podsjetnik da ne radi
-        }
+        upali_ugasi.isChecked();
     }
 
     @OnClick(R.id.promjenaLozz)
